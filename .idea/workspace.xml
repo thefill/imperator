@@ -1,13 +1,339 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="37b665d3-8d62-4d74-acc5-00ddd76a7f45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/feature_request.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.huskyrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.nvmrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.stylelintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest-e2e.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest-unit.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/jetli/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/jetli/jetli.class.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/jetli/jetli.class.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/README.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/api-docs.script.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/api-docs.style.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/readme.api-documentation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/readme.badges.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/readme.body.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/readme.header.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/docs-partials/readme.markdown-documentation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/dependency-config/dependency-config.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/dependency-config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/injection/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/injection/injection.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/jetli/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/jetli/jetli.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/jetli/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/jetli/jetli.service.e2e.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/jetli/jetli.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.cjs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.esm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/workflow-definition.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/workflow-definition.interface.ts" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/workflow-definition.interface.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="568">
+              <caret line="151" column="33" selection-start-line="151" selection-start-column="33" selection-end-line="151" selection-end-column="33" />
+              <folding>
+                <element signature="n#!!block;n#IWorkflowPhase#0" />
+                <element signature="n#!!block;n#IWorkflowPaths#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-462" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="44">
+                <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="18" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/docs-partials/readme.header.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="44">
+                <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.nvmrc">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/jetli/index.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>IRuleAction</find>
+      <find>IWorkflowBase</find>
+      <find>triggers</find>
+      <find>IRule</find>
+      <find>RuleType</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/workflow-definition.interface.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/docs-partials/readme.header.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="-2" />
+    <option name="width" value="1920" />
+    <option name="height" value="1082" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="imperator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="imperator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="imperator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="imperator" type="462c0819:PsiDirectoryNode" />
+              <item name=".circleci" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="imperator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="imperator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="imperator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="imperator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="docs-partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="6.11.5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jetli" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="ics" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37b665d3-8d62-4d74-acc5-00ddd76a7f45" name="Default Changelist" comment="" />
+      <created>1558433919626</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558433919626</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-2" width="1920" height="1082" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Grunt " order="0" side_tool="true" />
+      <window_info id="npm" order="1" show_stripe_button="false" sideWeight="0.500998" side_tool="true" weight="0.17026885" />
+      <window_info id="Favorites" order="2" show_stripe_button="false" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4973822" visible="true" weight="0.17026885" />
+      <window_info id="Structure" order="4" show_stripe_button="false" sideWeight="0.5010482" side_tool="true" weight="0.17650273" />
+      <window_info id="Event Log" order="5" show_stripe_button="false" sideWeight="0.5026178" side_tool="true" weight="0.17026885" />
+      <window_info id="Terminal" order="6" show_stripe_button="false" sideWeight="0.5014896" side_tool="true" weight="0.17026885" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.33717278" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.500998" weight="0.16963351" />
+      <window_info anchor="bottom" id="TypeScript" order="8" sideWeight="0.5026178" weight="0.16963351" />
+      <window_info anchor="bottom" auto_hide="true" id="Version Control" internal_type="SLIDING" order="9" sideWeight="0.500998" type="SLIDING" weight="0.9945355" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Grunt " order="0" side_tool="true" />
+      <window_info id="npm" order="1" show_stripe_button="false" sideWeight="0.500998" side_tool="true" weight="0.17026885" />
+      <window_info id="Favorites" order="2" show_stripe_button="false" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4973822" visible="true" weight="0.17026885" />
+      <window_info id="Structure" order="4" show_stripe_button="false" sideWeight="0.5010482" side_tool="true" weight="0.17650273" />
+      <window_info id="Event Log" order="5" show_stripe_button="false" sideWeight="0.5026178" side_tool="true" weight="0.17026885" />
+      <window_info id="Terminal" order="6" show_stripe_button="false" sideWeight="0.5014896" side_tool="true" weight="0.17026885" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.33717278" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.500998" weight="0.16963351" />
+      <window_info anchor="bottom" id="TypeScript" order="8" sideWeight="0.5026178" weight="0.16963351" />
+      <window_info anchor="bottom" auto_hide="true" id="Version Control" internal_type="SLIDING" order="9" sideWeight="0.500998" type="SLIDING" weight="0.9945355" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/jetli/index.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/workflow-definition.interface.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="151" column="33" selection-start-line="151" selection-start-column="33" selection-end-line="151" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!block;n#IWorkflowPhase#0" />
+            <element signature="n#!!block;n#IWorkflowPaths#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.nvmrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="44">
+            <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/docs-partials/readme.header.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="44">
+            <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
