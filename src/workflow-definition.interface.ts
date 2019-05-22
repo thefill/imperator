@@ -139,8 +139,11 @@ export enum ActionType {
 }
 
 
-// Path passed as an id:
+// TODO:
+// - undo step/path/segment/workflow
+// - redo step/path/segment/workflow
 
+// Path passed as an id:
 const test: IWorkflow = {
     id: 'workflow-1',
     name: 'Workflow 1',
