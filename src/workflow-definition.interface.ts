@@ -17,6 +17,10 @@ export interface IWorkflow extends IWorkflowBase {
     paramStore?: WorkflowParamStore;
     // should we merge to the params store params passed by triggers, by default no
     mergeTriggerParams?: boolean;
+    // step history
+    history?: IActionConfig[];
+    // current history index
+    currentHistoryIndex?: number;
 }
 
 export interface IWorkflowPhase extends IWorkflowBase {
@@ -135,13 +139,12 @@ export enum ActionType {
     // Close current flow or specific flow
     CLOSE = 'CLOSE',
     // Open new flow
-    OPEN = 'OPEN'
+    OPEN = 'OPEN',
+    // undo changes done by previous steps/path/segment/workflow
+    UNDO = 'UNDO',
+    // redo changes done by previously undo steps/path/segment/workflow
+    REDO = 'REDO'
 }
-
-
-// TODO:
-// - undo step/path/segment/workflow
-// - redo step/path/segment/workflow
 
 // Path passed as an id:
 const test: IWorkflow = {
