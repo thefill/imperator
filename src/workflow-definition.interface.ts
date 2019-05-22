@@ -132,7 +132,7 @@ export enum ActionType {
     // skip to specific step (as params provide number of steps to skip or path or array of paths ['phase id', 'path
     // id', 'step id'])
     SKIP = 'SKIP',
-    // Close current flow
+    // Close current flow or specific flow
     CLOSE = 'CLOSE',
     // Open new flow
     OPEN = 'OPEN'
