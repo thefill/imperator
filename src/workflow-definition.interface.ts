@@ -38,7 +38,7 @@ interface IWorkflowStep extends IWorkflowBase, IStepConfig {
 
 export interface IStepConfig {
     // how we should evaluate the step - if none provided we trigger onSuccess as soon as we hit this tep
-    processor?: IProcessor;
+    processor?: string | IProcessor;
     // list of actions for the successful rule execution:
     //  - callback returns true,
     //  - response to request arrives and/or returns true
@@ -53,19 +53,14 @@ export interface IStepConfig {
 export type WorkflowParamStore = { [key: string]: string | number | WorkflowParamStore | WorkflowParamStore[] };
 
 export interface IProcessor {
-    // how we should evaluate the step:
-    // - CALLBACK - we should use id and trigger callback registered under id
-    // - GENERIC - processors exposed by workflow itself
-    // - RESPONSE - we should use id and trigger callback registered under id, expect response via later call to step
-    // - all processors returns Promise
-    // - all processors are called with:
+    // trigger callback registered under id
+    // - processors returns Promise
+    // - processors are called with:
     //      - trigger params
     //      - global workflow ParamStore
     //      - step path (string[])
     //      - workflow object
-    type: ProcessorType,
-    // registered processors id or name if generic
-    id?: string | ProcessorType;
+    id?: string;
     // timestamp when executed
     calledDate?: number;
     // maximum time this step is valid for as number of ms or string matching /^[1-9]+(ms|s|min|h|d|w|m|y|){1}$/
@@ -74,26 +69,13 @@ export interface IProcessor {
     calledCount?: number;
     // how many times we should retry until we trigger onFailure
     retryCount?: number
+    // for how long we delay execution of the step
+    retryDelay?: number
 }
 
 export enum TriggerType {
     STEP = 'STEP',
     REQUEST = 'REQUEST',
-}
-
-export enum ProcessorType {
-    CALLBACK = 'CALLBACK',
-    GENERIC = 'GENERIC',
-    REQUEST_RESPONSE = 'REQUEST_RESPONSE',
-}
-
-export enum ProcessorType {
-    GLOBAL_PARAMS_EQUALS = 'GLOBAL_PARAMS_EQUALS',
-    GLOBAL_PARAMS_NOT_EQUALS = 'GLOBAL_PARAMS_NOT_EQUALS',
-    GLOBAL_PARAMS_INCLUDES = 'GLOBAL_PARAMS_INCLUDES',
-    TRIGGER_PARAMS_EQUALS = 'TRIGGER_PARAMS_EQUALS',
-    TRIGGER_PARAMS_NOT_EQUALS = 'TRIGGER_PARAMS_NOT_EQUALS',
-    TRIGGER_PARAMS_INCLUDES = 'TRIGGER_PARAMS_INCLUDES',
 }
 
 export interface IActionConfig {
@@ -160,10 +142,7 @@ const test: IWorkflow = {
                             id: 'step-a-1',
                             name: 'Step A-1',
                             status: Status.READY,
-                            processor: {
-                                type: ProcessorType.CALLBACK,
-                                id: 'callback-a-1'
-                            },
+                            processor: 'callback-a-1',
                             onSuccess: [
                                 ActionType.NEXT
                             ],
@@ -178,10 +157,7 @@ const test: IWorkflow = {
                             id: 'step-a-2',
                             name: 'Step A-2',
                             status: Status.READY,
-                            processor: {
-                                type: ProcessorType.CALLBACK,
-                                id: 'callback-a-2'
-                            },
+                            processor: 'callback-a-2',
                             onSuccess: [
                                 ActionType.NEXT
                             ],
@@ -196,10 +172,7 @@ const test: IWorkflow = {
                             id: 'step-a-3',
                             name: 'Step A-3',
                             status: Status.READY,
-                            processor: {
-                                type: ProcessorType.CALLBACK,
-                                id: 'callback-a-3'
-                            },
+                            processor: 'callback-a-3',
                             onSuccess: [
                                 ActionType.NEXT
                             ],
