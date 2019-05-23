@@ -3,7 +3,7 @@ import {IWorkflowConfig} from '../workflow-config';
 import {Processor} from '../processor';
 
 export interface IWorkflowController {
-    setProcessor(id, callback: Processor);
+    setProcessor(id: string, callback: Processor);
 
     unsetProcessor(id: string);
 
