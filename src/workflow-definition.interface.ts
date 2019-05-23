@@ -36,19 +36,7 @@ export interface IWorkflowPaths extends IWorkflowBase {
 interface IWorkflowStep extends IWorkflowBase, IStepConfig {
 }
 
-// Possible flows:
-//  - incoming -> step -> step
-//  - incoming -> step -> callback -> step
-//  - incoming -> step -> outgoing -> incoming -> step
-// incoming request triggers
-
 export interface IStepConfig {
-    // way step expects to be triggered:
-    // - STEP - triggered by previous step
-    // - REQUEST - triggered by external request e.g. workflow/workflow_id/segment_id/path_id/trigger
-    // - only first of paths steps can have this trigger
-    // - defaults to STEP
-    trigger?: TriggerType;
     // how we should evaluate the step - if none provided we trigger onSuccess as soon as we hit this tep
     processor?: IProcessor;
     // list of actions for the successful rule execution:
@@ -115,17 +103,23 @@ export interface IActionConfig {
     params?: any;
 }
 
-
 export enum Status {
+    // dont act on node - its in the middle of processing - time after calling callback and before promise is resolved
+    'PROCESSING' = -2,
+    // state that indicates we are expecting external trigger
+    'AWAITING' = -1,
+    // ready to be processed
     'READY' = 0,
-    'PENDING' = 1,
-    'SUCCEDED' = 2,
-    'FAILED' = 3,
-    'SKIPPED' = 4
+    // processed successfully
+    'SUCCEDED' = 1,
+    // failed while processing
+    'FAILED' = 2,
+    // skipped, wont be processed until reset
+    'SKIPPED' = 3
 }
 
 export enum ActionType {
-    // complete current, move to next step
+    // complete current, move to next step or if no next step available in current path next phase
     NEXT = 'NEXT',
     // make current ready, move to previous step
     PREVIOUS = 'PREVIOUS',
@@ -166,7 +160,6 @@ const test: IWorkflow = {
                             id: 'step-a-1',
                             name: 'Step A-1',
                             status: Status.READY,
-                            trigger: TriggerType.STEP,
                             processor: {
                                 type: ProcessorType.CALLBACK,
                                 id: 'callback-a-1'
@@ -185,7 +178,6 @@ const test: IWorkflow = {
                             id: 'step-a-2',
                             name: 'Step A-2',
                             status: Status.READY,
-                            trigger: TriggerType.STEP,
                             processor: {
                                 type: ProcessorType.CALLBACK,
                                 id: 'callback-a-2'
@@ -204,7 +196,6 @@ const test: IWorkflow = {
                             id: 'step-a-3',
                             name: 'Step A-3',
                             status: Status.READY,
-                            trigger: TriggerType.STEP,
                             processor: {
                                 type: ProcessorType.CALLBACK,
                                 id: 'callback-a-3'
