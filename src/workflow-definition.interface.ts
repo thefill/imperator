@@ -1,10 +1,32 @@
+
+export interface IWorkflowController {
+
+
+    setProcessor(id, callback: Processor)
+    unsetProcessor(id: string)
+
+    setWorkflow(workflowConfig: IWorkflow)
+    unsetWorkflow(workflowId: string)
+    evaluateWorkflow(id: string)
+
+    // trigger
+    action(
+        type: ActionType,
+        path: string | string[],
+        params?: any,
+        force?: boolean
+    )
+}
+
+export type Processor = (...args: any) => Promise<IWorkflowStatus>;
+
 interface IWorkflowBase {
     // unique id among node siblings
     id: string | number;
     // display name, fallback to id
     name?: string;
     // status of node
-    status: Status;
+    status: IWorkflowStatus;
     // optional tags that works as a selectors - helps in generation of diagram e.g. for UI
     tags?: string[]
 }
@@ -73,11 +95,6 @@ export interface IProcessor {
     retryDelay?: number
 }
 
-export enum TriggerType {
-    STEP = 'STEP',
-    REQUEST = 'REQUEST',
-}
-
 export interface IActionConfig {
     // type of action to take
     type: ActionType;
@@ -85,7 +102,7 @@ export interface IActionConfig {
     params?: any;
 }
 
-export enum Status {
+export enum IWorkflowStatus {
     // dont act on node - its in the middle of processing - time after calling callback and before promise is resolved
     'PROCESSING' = -2,
     // state that indicates we are expecting external trigger
@@ -101,6 +118,8 @@ export enum Status {
 }
 
 export enum ActionType {
+    // process specific step if ready
+    PROCESS = 'PROCESS',
     // complete current, move to next step or if no next step available in current path next phase
     NEXT = 'NEXT',
     // make current ready, move to previous step
@@ -126,22 +145,22 @@ export enum ActionType {
 const test: IWorkflow = {
     id: 'workflow-1',
     name: 'Workflow 1',
-    status: Status.READY,
+    status: IWorkflowStatus.READY,
     phases: [
         {
             id: 'phase-a',
             name: 'Phase A',
-            status: Status.READY,
+            status: IWorkflowStatus.READY,
             paths: [
                 {
                     id: 'default-path',
                     name: 'Default path',
-                    status: Status.READY,
+                    status: IWorkflowStatus.READY,
                     steps: [
                         {
                             id: 'step-a-1',
                             name: 'Step A-1',
-                            status: Status.READY,
+                            status: IWorkflowStatus.READY,
                             processor: 'callback-a-1',
                             onSuccess: [
                                 ActionType.NEXT
@@ -156,7 +175,7 @@ const test: IWorkflow = {
                         {
                             id: 'step-a-2',
                             name: 'Step A-2',
-                            status: Status.READY,
+                            status: IWorkflowStatus.READY,
                             processor: 'callback-a-2',
                             onSuccess: [
                                 ActionType.NEXT
@@ -171,7 +190,7 @@ const test: IWorkflow = {
                         {
                             id: 'step-a-3',
                             name: 'Step A-3',
-                            status: Status.READY,
+                            status: IWorkflowStatus.READY,
                             processor: 'callback-a-3',
                             onSuccess: [
                                 ActionType.NEXT
