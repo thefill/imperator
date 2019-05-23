@@ -14,7 +14,7 @@ export interface IWorkflowController {
     evaluateWorkflow(id: string);
 
     // trigger
-    action(
+    triggerAction(
         type: ActionType,
         path: string | string[],
         params?: any,
