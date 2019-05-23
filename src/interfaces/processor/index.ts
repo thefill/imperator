@@ -1,1 +1,1 @@
-export {IProcessor} from './processor.interface';
+export {IProcessor, Processor} from './processor.interface';
