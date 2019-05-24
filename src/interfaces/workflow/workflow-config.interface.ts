@@ -1,7 +1,7 @@
-import {IWorkflowParamStore} from '../workflow-param-store';
 import {IActionConfig} from '../action-config';
 import {IWorkflowBaseConfig} from '../workflow-base-config';
-import {IWorkflowPhaseConfig} from '../workflow-phase-config';
+import {IWorkflowParamStore} from '../workflow-param-store';
+import {IWorkflowPhaseConfig} from '../workflow-phase';
 
 export interface IWorkflowConfig extends IWorkflowBaseConfig {
     // list of phases in the workflow

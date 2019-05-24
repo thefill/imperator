@@ -1,5 +1,4 @@
-import {IWorkflowBaseConfig} from '../workflow-base-config';
-import {IStepConfig} from '../workflow-step-config';
+import {IWorkflowStepConfig} from './workflow-step-config.interface';
 
-export interface IWorkflowStep extends IWorkflowBaseConfig, IStepConfig {
+export interface IWorkflowStep extends IWorkflowStepConfig {
 }

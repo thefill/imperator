@@ -1,23 +1,22 @@
 import {ActionType} from '../../enums/action-type';
-import {IWorkflowConfig} from '../workflow-config';
-import {Processor} from '../processor';
+import {IProcessorConfig} from '../processor';
+import {IWorkflowConfig} from '../workflow';
 
 export interface IWorkflowController {
-    setProcessor(id: string, callback: Processor);
+    setProcessor(id: string, config: IProcessorConfig): void;
 
-    unsetProcessor(id: string);
+    unsetProcessor(id: string): void;
 
-    setWorkflow(workflowConfig: IWorkflowConfig);
+    setWorkflow(config: IWorkflowConfig): void;
 
-    unsetWorkflow(workflowId: string);
+    unsetWorkflow(id: string): void;
 
-    evaluateWorkflow(id: string);
-
-    // trigger
+    evaluateWorkflow(id: string): void;
+    
     triggerAction(
         type: ActionType,
         path: string | string[],
         params?: any,
         force?: boolean
-    );
+    ): void;
 }
