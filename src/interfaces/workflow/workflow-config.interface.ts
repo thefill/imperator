@@ -1,18 +1,14 @@
-import {IActionConfig} from '../action-config';
-import {IWorkflowBaseConfig} from '../workflow-base-config';
+import {IWorkflowBase} from '../workflow-base';
 import {IWorkflowParamStore} from '../workflow-param-store';
 import {IWorkflowPhaseConfig} from '../workflow-phase';
 
-export interface IWorkflowConfig extends IWorkflowBaseConfig {
+/**
+ * Config object for the workflow
+ */
+export interface IWorkflowConfig extends IWorkflowBase {
     // list of phases in the workflow
     phases: IWorkflowPhaseConfig[];
     // initial params passed when workflow started
     // can be modified by consecutive steps
     paramStore?: IWorkflowParamStore;
-    // should we merge to the params store params passed by triggers, by default no
-    mergeTriggerParams?: boolean;
-    // step history
-    history?: IActionConfig[];
-    // current history index
-    currentHistoryIndex?: number;
 }

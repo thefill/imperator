@@ -1,22 +1,70 @@
-import {ActionType} from '../../enums/action-type';
-import {IProcessorConfig} from '../processor';
-import {IWorkflowConfig} from '../workflow';
+import {IProcessor} from '../processor';
+import {IWorkflow, IWorkflowConfig} from '../workflow';
+import {IWorkflowSnapshot} from '../workflow-snapshot';
+import {IActionConfig} from '../action-config';
 
+/**
+ * Definition for workflow controller
+ */
 export interface IWorkflowController {
-    setProcessor(id: string, config: IProcessorConfig): void;
+    /**
+     * Set processor
+     * @param {IProcessor} processor
+     */
+    setProcessor(processor: IProcessor): void;
 
-    unsetProcessor(id: string): void;
+    /**
+     * Unset processor
+     * @param {string} processorId
+     */
+    unsetProcessor(processorId: string): void;
 
-    setWorkflow(config: IWorkflowConfig): void;
+    /**
+     * Set workflow
+     * @param {IWorkflowConfig} config Workflow config
+     * @returns {Promise<void>}
+     */
+    set(config: IWorkflowConfig): Promise<void>;
 
-    unsetWorkflow(id: string): void;
+    /**
+     * Unset workflow
+     * @param {string} workflowId Workflow id
+     * @returns {Promise<void>}
+     */
+    unset(workflowId: string): Promise<void>;
 
-    evaluateWorkflow(id: string): void;
-    
+    /**
+     * Evaluate workflow
+     * @param {string} workflowId Workflow id
+     * @returns {Promise<void>}
+     */
+    evaluate(workflowId: string): Promise<void>;
+
+    /**
+     * Trigger action for workflow
+     * @param {string} workflowId Workflow id
+     * @param {IActionConfig} action
+     * @param {boolean} force Should we force action even that state of workflow
+     *                        Does not allow it?
+     * @returns {Promise<void>}
+     */
     triggerAction(
-        type: ActionType,
-        path: string | string[],
-        params?: any,
+        workflowId: string,
+        action: IActionConfig,
         force?: boolean
-    ): void;
+    ): Promise<void>;
+
+    /**
+     * Retrieve snapshot of the workflow
+     * @param {string} workflowId Workflow id
+     * @returns {Promise<IWorkflowSnapshot>}
+     */
+    snapshot(workflowId: string): Promise<IWorkflowSnapshot>;
+
+    /**
+     * Get workflow instance
+     * @param {string} workflowId Workflow id
+     * @returns {Promise<IWorkflow>}
+     */
+    get(workflowId: string): Promise<IWorkflow>;
 }

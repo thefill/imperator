@@ -1,7 +1,10 @@
-import {IWorkflowBaseConfig} from '../workflow-base-config';
-import {IWorkflowStep} from '../workflow-step';
+import {IWorkflowBase} from '../workflow-base';
+import {IWorkflowStepConfig} from '../workflow-step';
 
-export interface IWorkflowPathConfig extends IWorkflowBaseConfig {
+/**
+ * Config object for the workflow path
+ */
+export interface IWorkflowPathConfig extends IWorkflowBase {
     // list of steps in the path, evaluated in sequence
-    steps: IWorkflowStep [];
+    steps: IWorkflowStepConfig[];
 }
