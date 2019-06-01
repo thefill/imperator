@@ -1,5 +1,5 @@
-import {IActionConfig} from '../action-config';
 import {ActionType} from '../../enums/action-type';
+import {IActionConfig} from '../action-config';
 
 /**
  * Workflow configuration base callbacks

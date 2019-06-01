@@ -1,6 +1,6 @@
-import {IWorkflowConfig} from './workflow-config.interface';
 import {IActionConfig} from '../action-config';
 import {IWorkflowPhase} from '../workflow-phase';
+import {IWorkflowConfig} from './workflow-config.interface';
 
 /**
  * Workflow definition

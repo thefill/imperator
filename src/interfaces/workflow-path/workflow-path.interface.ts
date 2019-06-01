@@ -1,5 +1,5 @@
-import {IWorkflowPathConfig} from './workflow-path-config.interface';
 import {IWorkflowStep} from '../workflow-step';
+import {IWorkflowPathConfig} from './workflow-path-config.interface';
 
 /**
  * Workflow path definition

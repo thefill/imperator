@@ -1,6 +1,7 @@
 import {IActionConfig} from '../action-config';
 import {IProcessor} from '../processor';
 import {IWorkflow, IWorkflowConfig} from '../workflow';
+import {IWorkflowSelector} from '../workflow-selector';
 import {IWorkflowSnapshot} from '../workflow-snapshot';
 
 /**
@@ -43,14 +44,14 @@ export interface IWorkflowController {
 
     /**
      * Trigger action for workflow
-     * @param {string} workflowPath Array of
+     * @param {IWorkflowSelector} selector Selector which node to trigger the action against
      * @param {IActionConfig} action
      * @param {boolean} force Should we force action even that state of workflow
      *                        Does not allow it?
      * @returns {Promise<void>}
      */
     trigger(
-        workflowPath: string | string[],
+        selector: IWorkflowSelector,
         action: IActionConfig,
         force?: boolean
     ): Promise<void>;
@@ -69,4 +70,3 @@ export interface IWorkflowController {
      */
     get(workflowId: string): Promise<IWorkflow>;
 }
-

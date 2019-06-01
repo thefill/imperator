@@ -2,11 +2,11 @@ import {WorkflowStatus} from '../../enums/workflow-status';
 import {IWorkflow} from '../workflow';
 
 /**
- * Definition of workflow data repository
+ * Definition of workflow data service
  */
-export interface IWorkflowDataRepository {
+export interface IWorkflowDataService {
     /**
-     * Initialise repository
+     * Initialise service
      * @returns {Promise<void>}
      */
     init(): Promise<void>;

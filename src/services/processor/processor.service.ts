@@ -1,6 +1,6 @@
 // import {Imperator} from '../../classes';
 //
 // // Instantiate dependency injection to adhere to singleton concept
-// const imperator = new ProcessorService();
+// const workflow-controller = new ProcessorService();
 //
-// export {imperator};
+// export {workflow-controller};

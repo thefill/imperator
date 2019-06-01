@@ -8,4 +8,6 @@ export interface IWorkflowStep extends IWorkflowStepConfig {
     processedDate?: number;
     // no of times processor has been evaluated (useful e.g. when retry have limit)
     processedCount?: number;
+    // index of current processor
+    activeProcessorIndex?: number;
 }

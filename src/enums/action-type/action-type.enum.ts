@@ -2,7 +2,7 @@
  * Types of actions that can be executed against workflow
  */
 export enum ActionType {
-    // execute specific processor
+    // execute step's processor
     PROCESS = 'PROCESS',
     // complete current, move to next step or if no next step available in current path next phase
     NEXT = 'NEXT',
