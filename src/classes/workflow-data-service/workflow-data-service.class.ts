@@ -1,23 +1,31 @@
-import {WorkflowStatus} from '../../enums';
+import {Jetli} from 'jetli';
+import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IWorkflow, IWorkflowDataRepository, IWorkflowDataService, IWorkflowDataServiceConfig} from '../../interfaces';
+import {LogService} from '../log-service';
 
 /**
  * Main class for workflow controller
  */
 export class WorkflowDataService implements IWorkflowDataService {
+    public initialised = false;
+    /**
+     * Name of the module - used e.g. for logging purposes
+     * @type {string}
+     */
+    protected name = 'Workflow data service';
     protected repository: IWorkflowDataRepository;
+    protected logService: LogService;
 
-    constructor(config: IWorkflowDataServiceConfig) {
+    constructor(config?: IWorkflowDataServiceConfig) {
         this.applyConfig(config);
-
-        // if no data repository provided fallback to default one
-        if (!this.repository) {
-            // TODO: create fallback to default data repository
-        }
     }
 
-    public async init(): Promise<void> {
+    public async init(jetli: Jetli): Promise<void> {
         await this.repository.init();
+        this.logService = await jetli.get(WorkflowDependency.LogService);
+        this.initialised = true;
+
+        await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
     public get(workflowId: string): Promise<IWorkflow> {
@@ -55,12 +63,9 @@ export class WorkflowDataService implements IWorkflowDataService {
         return Promise.resolve();
     }
 
-    protected applyConfig(config: IWorkflowDataServiceConfig) {
-        Object.apply(this, config);
-
-        // if no repository provided fallback to default one
-        if (!this.repository) {
-            // TODO: create fallback to default data repository
+    protected applyConfig(config?: IWorkflowDataServiceConfig) {
+        if (config) {
+            Object.apply(this, config);
         }
     }
 }

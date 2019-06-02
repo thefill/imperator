@@ -5,7 +5,7 @@ import {IProcessorRepository} from '../processor-repository';
  */
 export interface IProcessorServiceConfig {
     // Data repository used to preserve processors
-    repository: IProcessorRepository;
+    repository?: IProcessorRepository;
     // config for the repository
     repositoryConfig?: any;
 }

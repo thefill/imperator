@@ -7,6 +7,14 @@ import {IWorkflowSnapshot} from '../workflow-snapshot';
  * Definition for workflow controller
  */
 export interface IWorkflowController {
+    // Has the controller been already initialised
+    initialised: boolean;
+
+    /**
+     * Initialise controller
+     * @returns {Promise<void>}
+     */
+    init(...args: []): Promise<void>;
 
     /**
      * Set processor

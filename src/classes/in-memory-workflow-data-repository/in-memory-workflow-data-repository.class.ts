@@ -1,13 +1,27 @@
-import {WorkflowStatus} from '../../enums/workflow-status';
+import {Jetli} from 'jetli';
+import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IWorkflow, IWorkflowDataRepository} from '../../interfaces';
+import {LogService} from '../log-service';
 
 /**
  * Main class for in-memory workflow data repository
  */
 export class InMemoryWorkflowDataRepository implements IWorkflowDataRepository {
-    public init(): Promise<void> {
-        // TODO: implement
-        return Promise.resolve();
+    public initialised = false;
+    protected logService: LogService;
+
+    /**
+     * Name of the module - used e.g. for logging purposes
+     * @type {string}
+     */
+    protected name = 'In-memory workflow data repository';
+
+
+    public async init(jetli: Jetli): Promise<void> {
+        this.logService = await jetli.get(WorkflowDependency.LogService);
+
+        this.initialised = true;
+        await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
     public get(workflowId: string): Promise<IWorkflow> {

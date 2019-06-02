@@ -5,11 +5,14 @@ import {IWorkflow} from '../workflow';
  * Definition of workflow data service
  */
 export interface IWorkflowDataService {
+    // Has the service been already initialised
+    initialised: boolean;
+
     /**
      * Initialise service
      * @returns {Promise<void>}
      */
-    init(): Promise<void>;
+    init(...args: any): Promise<void>;
 
     /**
      * Get workflow by id

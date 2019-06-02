@@ -5,7 +5,7 @@ import {ILogRepository} from '../log-repository';
  */
 export interface ILogServiceConfig {
     // Data repository used to preserve logs
-    repository: ILogRepository;
+    repository?: ILogRepository;
     // config for the repository
     repositoryConfig?: any;
 }

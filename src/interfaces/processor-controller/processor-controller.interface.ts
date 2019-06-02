@@ -7,6 +7,12 @@ import {IWorkflow} from '../workflow';
  */
 export interface IProcessorController {
     /**
+     * Initialise controller
+     * @returns {Promise<void>}
+     */
+    init(...args: any): Promise<void>;
+
+    /**
      * Set processor
      * @param {IProcessor} processor
      */

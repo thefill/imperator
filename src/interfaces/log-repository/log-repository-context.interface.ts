@@ -2,8 +2,10 @@
  * Context definition for log repository
  */
 export interface ILogRepositoryContext {
+    // module name
+    name: string;
     // Scope where event occurred
     scope: any;
-    // Path route to the location in the workflow that caused event
-    path?: string[];
+    // additional data
+    data?: { [key: string]: any };
 }

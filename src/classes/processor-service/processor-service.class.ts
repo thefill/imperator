@@ -1,23 +1,31 @@
-import {WorkflowStatus} from '../../enums';
+import {Jetli} from 'jetli';
+import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IProcessor, IProcessorRepository, IProcessorService, IProcessorServiceConfig} from '../../interfaces';
+import {LogService} from '../log-service';
 
 /**
  * Main class for workflow controller
  */
 export class ProcessorService implements IProcessorService {
+    public initialised = false;
+    /**
+     * Name of the module - used e.g. for logging purposes
+     * @type {string}
+     */
+    protected name = 'Processor service';
     protected repository: IProcessorRepository;
+    protected logService: LogService;
 
-    constructor(config: IProcessorServiceConfig) {
+    constructor(config?: IProcessorServiceConfig) {
         this.applyConfig(config);
-
-        // if no data repository provided fallback to default one
-        if (!this.repository) {
-            // TODO: create fallback to default data repository
-        }
     }
 
-    public async init(): Promise<void> {
+    public async init(jetli: Jetli): Promise<void> {
+        this.logService = await jetli.get(WorkflowDependency.LogService);
         await this.repository.init();
+        this.initialised = true;
+
+        await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
     public get(processorId: string): Promise<IProcessor> {
@@ -44,12 +52,9 @@ export class ProcessorService implements IProcessorService {
         return Promise.resolve();
     }
 
-    protected applyConfig(config: IProcessorServiceConfig) {
-        Object.apply(this, config);
-
-        // if no repository provided fallback to default one
-        if (!this.repository) {
-            // TODO: create fallback to default data repository
+    protected applyConfig(config?: IProcessorServiceConfig) {
+        if (config) {
+            Object.apply(this, config);
         }
     }
 }

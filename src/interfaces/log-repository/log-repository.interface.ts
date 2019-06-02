@@ -4,11 +4,14 @@ import {ILogRepositoryContext} from './log-repository-context.interface';
  * Interface for log repository - repository used to log events in the workflow
  */
 export interface ILogRepository {
+    // Has the repository been already initialised
+    initialised: boolean;
+
     /**
      * Initialise repository
      * @returns {Promise<void>}
      */
-    init(): Promise<void>;
+    init(...args: any): Promise<void>;
 
     /**
      * Method to log minor events

@@ -47,7 +47,9 @@
             "quiet": false
         }
     },
-    "dependencies": {},
+    "dependencies": {
+        "jetli": "3.0.1"
+    },
     "devDependencies": {
         "@types/jest": "24.0.13",
         "codacy-coverage": "3.4.0",

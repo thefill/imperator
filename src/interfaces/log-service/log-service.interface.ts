@@ -4,11 +4,14 @@ import {ILogRepositoryContext} from '../log-repository';
  * Definition of processor service
  */
 export interface ILogService {
+    // Has the service been already initialised
+    initialised: boolean;
+
     /**
      * Initialise service
      * @returns {Promise<void>}
      */
-    init(): Promise<void>;
+    init(...args: any): Promise<void>;
 
     /**
      * Method to log minor events

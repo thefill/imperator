@@ -1,4 +1,5 @@
 import {ILogRepository} from '../log-repository';
+import {IProcessorRepository} from '../processor-repository';
 import {IWorkflowDataRepository} from '../workflow-data-repository';
 
 /**
@@ -8,5 +9,7 @@ export interface IWorkflowControllerConfig {
     // Data repository used to preserve and retrieve workflow
     dataRepository?: IWorkflowDataRepository;
     // Data repository used to preserve logs
-    logsRepository?: ILogRepository;
+    logRepository?: ILogRepository;
+    // Processor repository used to preserve processors
+    processorRepository?: IProcessorRepository;
 }

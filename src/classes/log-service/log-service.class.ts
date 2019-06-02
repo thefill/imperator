@@ -1,24 +1,26 @@
 import {ILogRepository, ILogRepositoryContext} from '../../interfaces';
 import {ILogService, ILogServiceConfig} from '../../interfaces/log-service';
-import {InMemoryLogRepository} from '../in-memory-log-repository';
 
 /**
  * Main class for workflow controller
  */
 export class LogService implements ILogService {
+    public initialised = false;
+    /**
+     * Name of the module - used e.g. for logging purposes
+     * @type {string}
+     */
+    protected name = 'Log service';
     protected repository: ILogRepository;
 
-    constructor(config: ILogServiceConfig) {
+    constructor(config?: ILogServiceConfig) {
         this.applyConfig(config);
-
-        // if no data repository provided fallback to default one
-        if (!this.repository) {
-            this.repository = new InMemoryLogRepository();
-        }
     }
 
     public async init(): Promise<void> {
         await this.repository.init();
+        this.initialised = true;
+        await this.log('Initialised', {name: this.name, scope: this});
     }
 
     public log(message: string, context: ILogRepositoryContext): Promise<void> {
@@ -37,12 +39,9 @@ export class LogService implements ILogService {
         return this.repository.info(message, context);
     }
 
-    protected applyConfig(config: ILogServiceConfig) {
-        Object.apply(this, config);
-
-        // if no repository provided fallback to default one
-        if (!this.repository) {
-            // TODO: create fallback to default data repository
+    protected applyConfig(config?: ILogServiceConfig) {
+        if (config) {
+            Object.apply(this, config);
         }
     }
 }

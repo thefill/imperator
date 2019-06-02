@@ -5,7 +5,7 @@ import {IWorkflowDataRepository} from '../workflow-data-repository';
  */
 export interface IWorkflowDataServiceConfig {
     // Data repository used to preserve processors
-    repository: IWorkflowDataRepository;
+    repository?: IWorkflowDataRepository;
     // config for the repository
     repositoryConfig?: any;
 }

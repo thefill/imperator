@@ -5,11 +5,14 @@ import {IWorkflow} from '../workflow';
  * Definition of workflow data repository
  */
 export interface IWorkflowDataRepository {
+    // Has the repository been already initialised
+    initialised: boolean;
+
     /**
      * Initialise repository
      * @returns {Promise<void>}
      */
-    init(): Promise<void>;
+    init(...args: any): Promise<void>;
 
     /**
      * Get workflow by id

@@ -4,11 +4,14 @@ import {IProcessor} from '../processor';
  * Definition of processor service
  */
 export interface IProcessorService {
+    // Has the service been already initialised
+    initialised: boolean;
+
     /**
      * Initialise service
      * @returns {Promise<void>}
      */
-    init(): Promise<void>;
+    init(...args: any): Promise<void>;
 
     /**
      * Get processor by id

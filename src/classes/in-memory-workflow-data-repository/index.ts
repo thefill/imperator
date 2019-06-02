@@ -1,1 +1,1 @@
-export {InMemoryProcessorRepository} from './in-memory-workflow-data-repository.class';
+export {InMemoryWorkflowDataRepository} from './in-memory-workflow-data-repository.class';
