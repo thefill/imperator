@@ -18,6 +18,7 @@ export class LogService implements ILogService {
     }
 
     public async init(): Promise<void> {
+        console.log(1111);
         await this.repository.init();
         this.initialised = true;
         await this.log('Initialised', {name: this.name, scope: this});
@@ -41,7 +42,7 @@ export class LogService implements ILogService {
 
     protected applyConfig(config?: ILogServiceConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
     }
 }

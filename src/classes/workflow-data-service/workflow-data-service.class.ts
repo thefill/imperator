@@ -65,7 +65,7 @@ export class WorkflowDataService implements IWorkflowDataService {
 
     protected applyConfig(config?: IWorkflowDataServiceConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
     }
 }

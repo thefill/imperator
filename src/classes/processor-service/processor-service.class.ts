@@ -7,7 +7,7 @@ import {LogService} from '../log-service';
  * Main class for workflow controller
  */
 export class ProcessorService implements IProcessorService {
-    public initialised = false;
+    public initialised = false; 
     /**
      * Name of the module - used e.g. for logging purposes
      * @type {string}
@@ -54,7 +54,7 @@ export class ProcessorService implements IProcessorService {
 
     protected applyConfig(config?: IProcessorServiceConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
     }
 }

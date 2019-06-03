@@ -52,11 +52,11 @@ export class WorkflowController implements IWorkflowController {
         await this.setupDependencies();
 
         // retrieve services
-        this.logService = await jetli.get(WorkflowDependency.LogService);
-        this.processorService = await jetli.get(WorkflowDependency.ProcessorService);
-        this.workflowDataService = await jetli.get(WorkflowDependency.WorkflowDataService);
+        // this.logService = await jetli.get(WorkflowDependency.LogService);
+        // this.processorService = await jetli.get(WorkflowDependency.ProcessorService);
+        // this.workflowDataService = await jetli.get(WorkflowDependency.WorkflowDataService);
 
-        await this.logService.log('Initialised', {name: this.name, scope: this});
+        // await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
     public setProcessor(processor: IProcessor): void {
@@ -133,7 +133,7 @@ export class WorkflowController implements IWorkflowController {
 
     protected applyConfig(config?: IWorkflowControllerConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
 
         // set global repositories
