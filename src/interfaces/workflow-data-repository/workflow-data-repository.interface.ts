@@ -1,19 +1,11 @@
 import {WorkflowStatus} from '../../enums/workflow-status';
+import {IInstance} from '../instance';
 import {IWorkflow} from '../workflow';
 
 /**
  * Definition of workflow data repository
  */
-export interface IWorkflowDataRepository {
-    // Has the repository been already initialised
-    initialised: boolean;
-
-    /**
-     * Initialise repository
-     * @returns {Promise<void>}
-     */
-    init(...args: any): Promise<void>;
-
+export interface IWorkflowDataRepository extends IInstance {
     /**
      * Get workflow by id
      * @param {string} workflowId Workflow id
@@ -41,6 +33,13 @@ export interface IWorkflowDataRepository {
      * @returns {Promise<void>}
      */
     set(workflow: IWorkflow): Promise<void>;
+
+    /**
+     * Remove existing workflow
+     * @param {string} workflowId Workflow id
+     * @returns {Promise<void>}
+     */
+    unset(workflowId: string): Promise<void>;
 
     /**
      * Update existing workflow

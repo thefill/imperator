@@ -1,4 +1,5 @@
 import {IActionConfig} from '../action-config';
+import {IInstance} from '../instance';
 import {IProcessor} from '../processor';
 import {IWorkflow, IWorkflowConfig} from '../workflow';
 import {IWorkflowSnapshot} from '../workflow-snapshot';
@@ -6,27 +7,18 @@ import {IWorkflowSnapshot} from '../workflow-snapshot';
 /**
  * Definition for workflow controller
  */
-export interface IWorkflowController {
-    // Has the controller been already initialised
-    initialised: boolean;
-
-    /**
-     * Initialise controller
-     * @returns {Promise<void>}
-     */
-    init(...args: []): Promise<void>;
-
+export interface IWorkflowController extends IInstance {
     /**
      * Set processor
      * @param {IProcessor} processor
      */
-    setProcessor(processor: IProcessor): void;
+    setProcessor(processor: IProcessor): Promise<void>;
 
     /**
      * Unset processor
      * @param {string} processorId
      */
-    unsetProcessor(processorId: string): void;
+    unsetProcessor(processorId: string): Promise<void>;
 
     /**
      * Set workflow

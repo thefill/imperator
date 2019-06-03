@@ -1,33 +1,23 @@
+import {ILogRepository, ILogRepositoryContext} from '../../interfaces';
+import {Instance} from '../instance';
+
 /**
  * Main class for in-memory log repository
  */
-export class InMemoryLogRepository {
+export class InMemoryLogRepository extends Instance implements ILogRepository {
     /**
      * Compose message
      * @param {string} message Message provided
-     * @param {any} context Message context
+     * @param {ILogRepositoryContext} context Message context
      * @returns {string}
      */
-    protected static composeMessage(message: string, context: any) {
+    protected static composeMessage(message: string, context: ILogRepositoryContext) {
         return `${message} | ${context.name}`;
     }
 
-    public initialised = false;
+    public name = 'In-memory log repository';
 
-    /**
-     * Name of the module - used e.g. for logging purposes
-     * @type {string}
-     */
-    protected name = 'In-memory log repository';
-
-    public async init(): Promise<void> {
-        this.initialised = true;
-        
-        await this.log('Initialised', {name: this.name, scope: this});
-        return Promise.resolve();
-    }
-
-    public log(message: string, context: any): Promise<void> {
+    public log(message: string, context: ILogRepositoryContext): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
@@ -55,7 +45,7 @@ export class InMemoryLogRepository {
         return Promise.resolve();
     }
 
-    public error(message: string, context: any): Promise<void> {
+    public error(message: string, context: ILogRepositoryContext): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
@@ -69,7 +59,7 @@ export class InMemoryLogRepository {
         return Promise.resolve();
     }
 
-    public info(message: string, context: any): Promise<void> {
+    public info(message: string, context: ILogRepositoryContext): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
@@ -83,4 +73,7 @@ export class InMemoryLogRepository {
         return Promise.resolve();
     }
 
+    protected async setDependencies() {
+        this.logService = this;
+    }
 }

@@ -1,23 +1,14 @@
+import {IInstance} from '../instance';
 import {IProcessor} from '../processor';
-import {IWorkflow} from '../workflow';
 
 /**
  * Definition of processor repository
  */
-export interface IProcessorRepository {
-    // Has the repository been already initialised
-    initialised: boolean;
-
-    /**
-     * Initialise repository
-     * @returns {Promise<void>}
-     */
-    init(...args: any): Promise<void>;
-
+export interface IProcessorRepository extends IInstance {
     /**
      * Get workflow by id
      * @param {string} processorId Processor id
-     * @returns {Promise<IWorkflow>}
+     * @returns {Promise<IProcessor>}
      */
     get(processorId: string): Promise<IProcessor>;
 
@@ -29,15 +20,22 @@ export interface IProcessorRepository {
     exists(processor: string): Promise<boolean>;
 
     /**
-     * Create non-existing workflow
-     * @param {IWorkflow} processor pProcessor definition
+     * Create non-existing processor
+     * @param {IProcessor} processor Processor definition
      * @returns {Promise<void>}
      */
     set(processor: IProcessor): Promise<void>;
 
     /**
+     * Remove existing processor
+     * @param {string} processorId Processor id
+     * @returns {Promise<void>}
+     */
+    unset(processorId: string): Promise<void>;
+
+    /**
      * Update existing processor
-     * @param {IWorkflow} processor Processor definition
+     * @param {IProcessor} processor Processor definition
      * @returns {Promise<void>}
      */
     update(processor: IProcessor): Promise<void>;

@@ -1,18 +1,10 @@
+import {IInstance} from '../instance';
 import {ILogRepositoryContext} from '../log-repository';
 
 /**
  * Definition of processor service
  */
-export interface ILogService {
-    // Has the service been already initialised
-    initialised: boolean;
-
-    /**
-     * Initialise service
-     * @returns {Promise<void>}
-     */
-    init(...args: any): Promise<void>;
-
+export interface ILogService extends IInstance {
     /**
      * Method to log minor events
      * @param {string} message Event message

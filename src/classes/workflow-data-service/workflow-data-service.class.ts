@@ -1,24 +1,13 @@
-import {jetli} from 'jetli';
-import {WorkflowDependency, WorkflowStatus} from '../../enums';
+import {WorkflowStatus} from '../../enums';
 import {IWorkflow, IWorkflowDataRepository, IWorkflowDataService, IWorkflowDataServiceConfig} from '../../interfaces';
-import {LogService} from '../log-service';
+import {Instance} from '../instance';
 
 /**
  * Main class for workflow controller
  */
-export class WorkflowDataService implements IWorkflowDataService {
-    public initialised = false;
-    protected logService: LogService;
-    /**
-     * Name of the module - used e.g. for logging purposes
-     * @type {string}
-     */
-    protected name = 'Workflow data service';
+export class WorkflowDataService extends Instance<IWorkflowDataServiceConfig> implements IWorkflowDataService {
+    public name = 'Workflow data service';
     protected repository: IWorkflowDataRepository;
-
-    constructor(config?: IWorkflowDataServiceConfig) {
-        this.applyConfig(config);
-    }
 
     public async init(): Promise<void> {
         await this.setDependencies();
@@ -58,18 +47,13 @@ export class WorkflowDataService implements IWorkflowDataService {
         return Promise.resolve();
     }
 
-    public update(workflow: IWorkflow): Promise<void> {
+    public unset(workflowId: string): Promise<void> {
         // TODO: implement
         return Promise.resolve();
     }
 
-    protected async setDependencies() {
-        this.logService = await jetli.get(WorkflowDependency.LogService);
-    }
-
-    protected applyConfig(config?: IWorkflowDataServiceConfig) {
-        if (config) {
-            Object.assign(this, config);
-        }
+    public update(workflow: IWorkflow): Promise<void> {
+        // TODO: implement
+        return Promise.resolve();
     }
 }

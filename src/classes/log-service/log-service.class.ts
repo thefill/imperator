@@ -1,27 +1,17 @@
 import {ILogRepository, ILogRepositoryContext} from '../../interfaces';
 import {ILogService, ILogServiceConfig} from '../../interfaces/log-service';
+import {Instance} from '../instance';
 
 /**
  * Main class for workflow controller
  */
-export class LogService implements ILogService {
-    public initialised = false;
-    /**
-     * Name of the module - used e.g. for logging purposes
-     * @type {string}
-     */
-    protected name = 'Log service';
+export class LogService extends Instance<ILogServiceConfig> implements ILogService {
+    public name = 'Log service';
     protected repository: ILogRepository;
-
-    constructor(config?: ILogServiceConfig) {
-        this.applyConfig(config);
-    }
 
     public async init(): Promise<void> {
         await this.repository.init();
-        this.initialised = true;
-
-        await this.log('Initialised', {name: this.name, scope: this});
+        await super.init();
     }
 
     public log(message: string, context: ILogRepositoryContext): Promise<void> {
@@ -38,11 +28,5 @@ export class LogService implements ILogService {
 
     public info(message: string, context: ILogRepositoryContext): Promise<void> {
         return this.repository.info(message, context);
-    }
-
-    protected applyConfig(config?: ILogServiceConfig) {
-        if (config) {
-            Object.assign(this, config);
-        }
     }
 }

@@ -1,27 +1,12 @@
-import {jetli} from 'jetli';
-import {WorkflowDependency, WorkflowStatus} from '../../enums';
+import {WorkflowStatus} from '../../enums';
 import {IProcessor, IProcessorRepository} from '../../interfaces';
-import {LogService} from '../log-service';
+import {Instance} from '../instance';
 
 /**
  * Main class for in-memory processor repository
  */
-export class InMemoryProcessorRepository implements IProcessorRepository {
-    public initialised = false;
-    protected logService: LogService;
-
-    /**
-     * Name of the module - used e.g. for logging purposes
-     * @type {string}
-     */
-    protected name = 'In-memory processor repository';
-
-    public async init(): Promise<void> {
-        await this.setDependencies();
-        this.initialised = true;
-
-        await this.logService.log('Initialised', {name: this.name, scope: this});
-    }
+export class InMemoryProcessorRepository extends Instance implements IProcessorRepository {
+    public name = 'In-memory processor repository';
 
     public get(processorId: string): Promise<IProcessor> {
         // TODO: implement
@@ -43,12 +28,13 @@ export class InMemoryProcessorRepository implements IProcessorRepository {
         return Promise.resolve();
     }
 
-    public update(processor: IProcessor): Promise<void> {
+    public unset(processorId: string): Promise<void> {
         // TODO: implement
         return Promise.resolve();
     }
 
-    protected async setDependencies() {
-        this.logService = await jetli.get(WorkflowDependency.LogService);
+    public update(processor: IProcessor): Promise<void> {
+        // TODO: implement
+        return Promise.resolve();
     }
 }

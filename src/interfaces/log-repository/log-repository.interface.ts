@@ -1,18 +1,10 @@
+import {IInstance} from '../instance';
 import {ILogRepositoryContext} from './log-repository-context.interface';
 
 /**
  * Interface for log repository - repository used to log events in the workflow
  */
-export interface ILogRepository {
-    // Has the repository been already initialised
-    initialised: boolean;
-
-    /**
-     * Initialise repository
-     * @returns {Promise<void>}
-     */
-    init(...args: any): Promise<void>;
-
+export interface ILogRepository extends IInstance {
     /**
      * Method to log minor events
      * @param {string} message Event message
