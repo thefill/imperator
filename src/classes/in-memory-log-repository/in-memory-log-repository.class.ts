@@ -1,16 +1,14 @@
-import {ILogRepository, ILogRepositoryContext} from '../../interfaces';
-
 /**
  * Main class for in-memory log repository
  */
-export class InMemoryLogRepository implements ILogRepository {
+export class InMemoryLogRepository {
     /**
      * Compose message
      * @param {string} message Message provided
-     * @param {ILogRepositoryContext} context Message context
+     * @param {any} context Message context
      * @returns {string}
      */
-    protected static composeMessage(message: string, context: ILogRepositoryContext) {
+    protected static composeMessage(message: string, context: any) {
         return `${message} | ${context.name}`;
     }
 
@@ -23,44 +21,65 @@ export class InMemoryLogRepository implements ILogRepository {
     protected name = 'In-memory log repository';
 
     public async init(): Promise<void> {
-        await this.log('Initialised', {name: this.name, scope: this});
         this.initialised = true;
+        
+        await this.log('Initialised', {name: this.name, scope: this});
         return Promise.resolve();
     }
 
-    public log(message: string, context: ILogRepositoryContext): Promise<void> {
+    public log(message: string, context: any): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
-        // tslint:disable-next-line
-        console.log(logMessage, context.scope, context.data);
+        if (context.data) {
+            // tslint:disable-next-line
+            console.log(logMessage, context.data);
+        } else {
+            // tslint:disable-next-line
+            console.log(logMessage);
+        }
         return Promise.resolve();
     }
 
-    public warn(message: string, context: ILogRepositoryContext): Promise<void> {
+    public warn(message: string, context: any): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
-        // tslint:disable-next-line
-        console.warn(logMessage, context.scope, context.data);
+        if (context.data) {
+            // tslint:disable-next-line
+            console.warn(logMessage, context.data);
+        } else {
+            // tslint:disable-next-line
+            console.warn(logMessage);
+        }
         return Promise.resolve();
     }
 
-    public error(message: string, context: ILogRepositoryContext): Promise<void> {
+    public error(message: string, context: any): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
-        // tslint:disable-next-line
-        console.error(logMessage, context.scope, context.data);
+        if (context.data) {
+            // tslint:disable-next-line
+            console.error(logMessage, context.data, context.scope);
+        } else {
+            // tslint:disable-next-line
+            console.error(logMessage);
+        }
         return Promise.resolve();
     }
 
-    public info(message: string, context: ILogRepositoryContext): Promise<void> {
+    public info(message: string, context: any): Promise<void> {
         // prepare message
         const logMessage = InMemoryLogRepository.composeMessage(message, context);
 
-        // tslint:disable-next-line
-        console.info(logMessage, context.scope, context.data);
+        if (context.data) {
+            // tslint:disable-next-line
+            console.info(logMessage, context.data);
+        } else {
+            // tslint:disable-next-line
+            console.info(logMessage);
+        }
         return Promise.resolve();
     }
 

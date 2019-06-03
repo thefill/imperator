@@ -35,14 +35,14 @@ export class WorkflowController implements IWorkflowController {
     protected name = 'Workflow controller';
 
     // Repositories
-    protected dataRepository: IWorkflowDataRepository;
     protected logRepository: ILogRepository;
     protected processorRepository: IProcessorRepository;
+    protected dataRepository: IWorkflowDataRepository;
 
     // Services
+    protected logService: LogService;
     protected processorService: ProcessorService;
     protected workflowDataService: WorkflowDataService;
-    protected logService: LogService;
 
     constructor(config?: IWorkflowControllerConfig) {
         this.applyConfig(config);
@@ -50,11 +50,7 @@ export class WorkflowController implements IWorkflowController {
 
     public async init(): Promise<void> {
         await this.setupDependencies();
-
-        // retrieve services
-        this.logService = await jetli.get(WorkflowDependency.LogService);
-        this.processorService = await jetli.get(WorkflowDependency.ProcessorService);
-        this.workflowDataService = await jetli.get(WorkflowDependency.WorkflowDataService);
+        await this.setDependencies();
 
         await this.logService.log('Initialised', {name: this.name, scope: this});
     }
@@ -113,6 +109,13 @@ export class WorkflowController implements IWorkflowController {
         });
     }
 
+    protected async setDependencies() {
+        // retrieve services
+        this.logService = await jetli.get(WorkflowDependency.LogService);
+        this.processorService = await jetli.get(WorkflowDependency.ProcessorService);
+        this.workflowDataService = await jetli.get(WorkflowDependency.WorkflowDataService);
+    }
+
     protected async setupDependencies() {
         // Setup service configs
         const logServiceConfig: ILogServiceConfig = {
@@ -133,7 +136,7 @@ export class WorkflowController implements IWorkflowController {
 
     protected applyConfig(config?: IWorkflowControllerConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
 
         // set global repositories

@@ -1,4 +1,4 @@
-import {Jetli} from 'jetli';
+import {jetli} from 'jetli';
 import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IWorkflow, IWorkflowDataRepository} from '../../interfaces';
 import {LogService} from '../log-service';
@@ -9,7 +9,6 @@ import {LogService} from '../log-service';
 export class InMemoryWorkflowDataRepository implements IWorkflowDataRepository {
     public initialised = false;
     protected logService: LogService;
-
     /**
      * Name of the module - used e.g. for logging purposes
      * @type {string}
@@ -17,10 +16,10 @@ export class InMemoryWorkflowDataRepository implements IWorkflowDataRepository {
     protected name = 'In-memory workflow data repository';
 
 
-    public async init(jetli: Jetli): Promise<void> {
-        this.logService = await jetli.get(WorkflowDependency.LogService);
-
+    public async init(): Promise<void> {
+        await this.setDependencies();
         this.initialised = true;
+
         await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
@@ -57,6 +56,10 @@ export class InMemoryWorkflowDataRepository implements IWorkflowDataRepository {
     public update(workflow: IWorkflow): Promise<void> {
         // TODO: implement
         return Promise.resolve();
+    }
+
+    protected async setDependencies() {
+        this.logService = await jetli.get(WorkflowDependency.LogService);
     }
 
 }

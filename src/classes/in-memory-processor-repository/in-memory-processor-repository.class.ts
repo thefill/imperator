@@ -1,4 +1,4 @@
-import {Jetli} from 'jetli';
+import {jetli} from 'jetli';
 import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IProcessor, IProcessorRepository} from '../../interfaces';
 import {LogService} from '../log-service';
@@ -16,10 +16,10 @@ export class InMemoryProcessorRepository implements IProcessorRepository {
      */
     protected name = 'In-memory processor repository';
 
-    public async init(jetli: Jetli): Promise<void> {
-        this.logService = await jetli.get(WorkflowDependency.LogService);
-
+    public async init(): Promise<void> {
+        await this.setDependencies();
         this.initialised = true;
+
         await this.logService.log('Initialised', {name: this.name, scope: this});
     }
 
@@ -46,5 +46,9 @@ export class InMemoryProcessorRepository implements IProcessorRepository {
     public update(processor: IProcessor): Promise<void> {
         // TODO: implement
         return Promise.resolve();
+    }
+
+    protected async setDependencies() {
+        this.logService = await jetli.get(WorkflowDependency.LogService);
     }
 }

@@ -1,4 +1,4 @@
-import {Jetli} from 'jetli';
+import {jetli} from 'jetli';
 import {WorkflowDependency, WorkflowStatus} from '../../enums';
 import {IWorkflow, IWorkflowDataRepository, IWorkflowDataService, IWorkflowDataServiceConfig} from '../../interfaces';
 import {LogService} from '../log-service';
@@ -8,21 +8,21 @@ import {LogService} from '../log-service';
  */
 export class WorkflowDataService implements IWorkflowDataService {
     public initialised = false;
+    protected logService: LogService;
     /**
      * Name of the module - used e.g. for logging purposes
      * @type {string}
      */
     protected name = 'Workflow data service';
     protected repository: IWorkflowDataRepository;
-    protected logService: LogService;
 
     constructor(config?: IWorkflowDataServiceConfig) {
         this.applyConfig(config);
     }
 
-    public async init(jetli: Jetli): Promise<void> {
+    public async init(): Promise<void> {
+        await this.setDependencies();
         await this.repository.init();
-        this.logService = await jetli.get(WorkflowDependency.LogService);
         this.initialised = true;
 
         await this.logService.log('Initialised', {name: this.name, scope: this});
@@ -63,9 +63,13 @@ export class WorkflowDataService implements IWorkflowDataService {
         return Promise.resolve();
     }
 
+    protected async setDependencies() {
+        this.logService = await jetli.get(WorkflowDependency.LogService);
+    }
+
     protected applyConfig(config?: IWorkflowDataServiceConfig) {
         if (config) {
-            Object.apply(this, config);
+            Object.assign(this, config);
         }
     }
 }
